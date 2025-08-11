@@ -1,0 +1,76 @@
+sudo apt update
+sudo apt upgrade
+sudo apt install nvtop
+sudo apt install gcc git
+
+# nvidia-570 
+
+# cuda=12.8
+wget https://developer.download.nvidia.com/compute/cuda/12.8.0/local_installers/cuda_12.8.0_570.86.10_linux.run
+sudo sh cuda_12.8.0_570.86.10_linux.run
+# export PATH=/usr/local/cuda-12.8/bin:$PATH
+# export LD_LIBRARY_PATH=/usr/local/cuda-12.8/lib64:$LD_LIBRARY_PATH
+# export LIBRARY_PATH=/usr/local/cuda-12.8/lib64:$LIBRARY_PATH
+
+# https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/?C=M&O=D  安装anaconda
+# bash xxx.sh
+# export PATH="$HOME/anaconda3/bin:$PATH"
+echo ". /home/robot/anaconda3/etc/profile.d/conda.sh" >> ~/.bashrc
+echo "conda activate" >> ~/.bashrc
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+conda config --set show_channel_urls yes
+conda install ffmpeg 
+
+# 创建lerobot conda虚拟环境
+conda create -y -n lerobot python=3.10
+conda activate lerobot
+conda install ffmpeg -c conda-forge
+pip install opencv-python
+
+# lerobot
+git clone https://github.com/huggingface/lerobot.git
+cd lerobot
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+pip install -e . 
+pip install -e ".[aloha, pusht]"
+pip install lerobot
+
+python -m lerobot.scripts.visualize_dataset \
+    --repo-id lerobot/pusht \
+    --episode-index 0
+    
+python -m lerobot.scripts.visualize_dataset     --repo-id lerobot/aloha_static_coffee     --episode-index 3
+
+lerobot-eval \
+    --policy.path=lerobot/diffusion_pusht \
+    --env.type=pusht \
+    --eval.batch_size=10 \
+    --eval.n_episodes=10 \
+    --policy.use_amp=false \
+    --policy.device=cuda
+
+lerobot-train --config_path=lerobot/diffusion_pusht
+
+
+# isaac sim
+conda create -n env_isaaclab python=3.11
+conda activate env_isaaclab
+pip install --upgrade pip
+pip install torch==2.7.0 torchvision==0.22.0 --index-url https://download.pytorch.org/whl/cu128
+pip install "isaacsim[all,extscache]==5.0.0" --extra-index-url https://pypi.nvidia.com
+isaacsim
+
+# isaac lab
+git clone https://github.com/isaac-sim/IsaacLab.git
+sudo apt install cmake build-essential
+cd IsaacLab
+./isaaclab.sh --install # or "./isaaclab.sh -i"
+./isaaclab.sh --help
+./isaaclab.sh -p scripts/tutorials/00_sim/create_empty.py
+python scripts/tutorials/00_sim/create_empty.py
+./isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/train.py --task=Isaac-Ant-v0 --headless
+./isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/train.py --task=Isaac-Velocity-Rough-Anymal-C-v0 --headless
