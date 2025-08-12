@@ -11,7 +11,7 @@ sudo sh cuda_12.8.0_570.86.10_linux.run
 # export PATH=/usr/local/cuda-12.8/bin:$PATH
 # export LD_LIBRARY_PATH=/usr/local/cuda-12.8/lib64:$LD_LIBRARY_PATH
 # export LIBRARY_PATH=/usr/local/cuda-12.8/lib64:$LIBRARY_PATH
-
+nvcc --verision
 # https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/?C=M&O=D  bash xxx.sh 安装anaconda 
 # export PATH="$HOME/anaconda3/bin:$PATH"
 echo ". /home/robot/anaconda3/etc/profile.d/conda.sh" >> ~/.bashrc
