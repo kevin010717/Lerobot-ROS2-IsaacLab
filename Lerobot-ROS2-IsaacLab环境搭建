@@ -68,7 +68,6 @@ cd IsaacLab
 ./isaaclab.sh --install # or "./isaaclab.sh -i"
 ./isaaclab.sh --help
 ./isaaclab.sh -p scripts/tutorials/00_sim/create_empty.py
-python scripts/tutorials/00_sim/create_empty.py
 ./isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/train.py --task=Isaac-Ant-v0 --headless
 ./isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/train.py --task=Isaac-Velocity-Rough-Anymal-C-v0 --headless
 
