@@ -23,7 +23,7 @@ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/
 conda config --set show_channel_urls yes
 
 # 创建lerobot conda虚拟环境
-conda create -y -n lerobot python=3.10
+conda create -y -n lerobot python=3.11
 conda activate lerobot
 conda install ffmpeg -c conda-forge
 pip install opencv-python
