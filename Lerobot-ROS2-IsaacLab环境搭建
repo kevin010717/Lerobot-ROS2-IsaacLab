@@ -3,7 +3,11 @@ sudo apt upgrade
 sudo apt install nvtop
 sudo apt install gcc git
 
-# nvidia-570 
+# nvidia-575
+ubuntu-drivers devices
+sudo apt install nvidia-driver-575-open
+sudo dmesg | grep -i nvidia
+
 
 # cuda=12.8
 wget https://developer.download.nvidia.com/compute/cuda/12.8.0/local_installers/cuda_12.8.0_570.86.10_linux.run
