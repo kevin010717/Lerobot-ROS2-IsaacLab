@@ -57,7 +57,7 @@ lerobot-train --config_path=lerobot/diffusion_pusht
 conda create -n env_isaaclab python=3.11
 conda activate env_isaaclab
 pip install --upgrade pip
-pip install torch==2.7.0 torchvision==0.22.0 --index-url https://download.pytorch.org/whl/cu128
+# pip install torch==2.7.0 torchvision==0.22.0 --index-url https://download.pytorch.org/whl/cu128
 pip install "isaacsim[all,extscache]==5.0.0" --extra-index-url https://pypi.nvidia.com
 isaacsim
 
