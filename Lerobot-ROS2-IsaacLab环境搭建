@@ -75,5 +75,11 @@ cd IsaacLab
 ./isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/train.py --task=Isaac-Ant-v0 --headless
 ./isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/train.py --task=Isaac-Velocity-Rough-Anymal-C-v0 --headless
 
+conda env export -n env_isaaclab > env_isaaclab_backup.yml
+conda env create -n env_isaaclab_new -f env_isaaclab_backup.yml
+conda activate env_isaaclab_new
+conda env update -f env_isaaclab_backup.yml
+
 
 # ros2 hummble
+source <(wget -qO- http://fishros.com/install)
