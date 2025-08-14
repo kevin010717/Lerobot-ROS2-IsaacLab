@@ -1,0 +1,4 @@
+1.导入urdf
+2.create physics-groundplane
+3.world-ur5-world-add-physics-articulation root
+4.
