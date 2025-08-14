@@ -1,0 +1,4 @@
+conda create -n env_isaacsim python=3.10
+conda activate env_isaacsim
+pip install "isaacsim[all]==4.5.0" --extra-index-url https://pypi.nvidia.com
+pip install isaacsim[extscache]==4.5.0 --extra-index-url https://pypi.nvidia.com
