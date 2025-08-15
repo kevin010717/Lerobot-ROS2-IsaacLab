@@ -4,3 +4,11 @@ rm -rf build/moveit_servo install/moveit_servo log
 colcon build --packages-select moveit_servo
 # 若成功，再不选包地全量构建
 colcon build
+
+pip3 install --user --upgrade --force-reinstall "numpy==1.24.4"
+pip3 install pandas pyarrow
+
+
+source ~/ur5_simulation/install/setup.zsh
+ros2 launch ur5_moveit_config arm_joy_control.launch.py
+python3 src/data_collection/scripts/data_collection.py   
