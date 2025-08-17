@@ -13,3 +13,6 @@ source ~/ur5_simulation/install/setup.zsh
 ros2 launch ur5_moveit_config arm_joy_control.launch.py
 python ~/ur5_simulation/lerobot_related/show_data.py 
 python3 ~/ur5_simulation/src/data_collection/scripts/data_collection.py   
+
+ros2 launch ur5_moveit_config arm_difussion_control.launch.py
+python ~/lerobot/examples/2_evaluate_pretrained_policy_ROS.py
