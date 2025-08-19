@@ -1,8 +1,8 @@
 | VLA框架、模型、数据集、资料、公司、文章 | 链接                                                         | 描述 |
 | --------------------------------------- | ------------------------------------------------------------ | ---- |
-| 框架-lerobot                            | [GitHub](https://github.com/huggingface/lerobot)             |      |
+| 框架-lerobot                            | [GitHub](https://github.com/huggingface/lerobot)   [any4lerobot](https://github.com/Tavish9/any4lerobot)   [unitree_IL_lerobot](https://github.com/unitreerobotics/unitree_IL_lerobot) |      |
 | 框架-leisaac                            | [GitHub](https://github.com/LightwheelAI/leisaac/tree/main)  |      |
-| 框架-isaacsim                           | [nvidia](https://github.com/Lifelong-Robot-Learning/LIBERO)  |      |
+| 框架-isaacsim                           | [nvidia](https://github.com/Lifelong-Robot-Learning/LIBERO)   [unitree_sim_isaaclab](https://github.com/unitreerobotics/unitree_sim_isaaclab/tree/main)   [unitree_rl_lab](https://github.com/unitreerobotics/unitree_rl_lab) |      |
 | 框架-SimplerEnv                         | [GitHub](https://github.com/simpler-env/SimplerEnv?tab=readme-ov-file) |      |
 | 框架-OpenUSD                            | [GitHub](https://github.com/PixarAnimationStudios/OpenUSD)   |      |
 |                                         |                                                              |      |
@@ -39,7 +39,8 @@
 | 手柄控制 | [手柄遥控方案](https://www.bilibili.com/video/BV1xRc6eHEvL?spm_id_from=333.788.videopod.sections&vd_source=d91bffd2a7a6acff9ff536f2f1332429)   [joycon-robotics](https://github.com/box2ai-robotics/joycon-robotics) |      |
 | 网页控制 | [BamBot](https://bambot.org/)                                |      |
 | 仿真     | [isaac_so_arm101](https://github.com/MuammerBay/isaac_so_arm101) |      |
-|          |                                                              |      |
+| 训练     | [groot n1.5](https://zhuanlan.zhihu.com/p/1938339457687356969) |      |
+| 工具     | [ROS 2 Package for LeRobot SO-ARM101](https://github.com/Pavankv92/lerobot_ws) |      |
 
 | 大模型       | 链接                                                    |      |
 | ------------ | ------------------------------------------------------- | ---- |
@@ -49,3 +50,13 @@
 | AutoDL       | [AutoDL](https://www.autodl.com/machine/list)           |      |
 | Zread        | [Zread](https://zread.ai/)                              |      |
 | 论文翻译     | [论文翻译](https://www.julyedu.com/#exercise-container) |      |
+
+| 其他       |                                                              |      |
+| ---------- | ------------------------------------------------------------ | ---- |
+| isaac-slam | [isaac_ros_visual_slam与Isaac ROS Nvblox](https://www.bilibili.com/video/BV14jBRYNE93/?spm_id_from=333.337.search-card.all.click&vd_source=d91bffd2a7a6acff9ff536f2f1332429) |      |
+|            |                                                              |      |
+|            |                                                              |      |
+|            |                                                              |      |
+|            |                                                              |      |
+|            |                                                              |      |
+
