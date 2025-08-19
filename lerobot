@@ -1,0 +1,29 @@
+# 创建lerobot conda虚拟环境
+conda create -y -n lerobot python=3.11
+conda activate lerobot
+conda install ffmpeg -c conda-forge
+pip install opencv-python
+
+# lerobot
+git clone https://github.com/huggingface/lerobot.git
+cd lerobot
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+pip install -e . 
+pip install -e ".[aloha, pusht]"
+pip install lerobot
+
+python -m lerobot.scripts.visualize_dataset \
+    --repo-id lerobot/pusht \
+    --episode-index 0
+    
+python -m lerobot.scripts.visualize_dataset     --repo-id lerobot/aloha_static_coffee     --episode-index 3
+
+lerobot-eval \
+    --policy.path=lerobot/diffusion_pusht \
+    --env.type=pusht \
+    --eval.batch_size=10 \
+    --eval.n_episodes=10 \
+    --policy.use_amp=false \
+    --policy.device=cuda
+
+lerobot-train --config_path=lerobot/diffusion_pusht

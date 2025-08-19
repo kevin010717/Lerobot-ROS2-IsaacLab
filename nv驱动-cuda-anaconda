@@ -1,0 +1,29 @@
+sudo apt update
+sudo apt upgrade
+sudo apt install nvtop
+sudo apt install gcc git
+
+# nvidia-575
+ubuntu-drivers devices
+sudo apt install nvidia-driver-575-open
+sudo dmesg | grep -i nvidia
+
+
+# cuda=12.8
+wget https://developer.download.nvidia.com/compute/cuda/12.8.0/local_installers/cuda_12.8.0_570.86.10_linux.run
+sudo sh cuda_12.8.0_570.86.10_linux.run
+# export PATH=/usr/local/cuda-12.8/bin:$PATH
+# export LD_LIBRARY_PATH=/usr/local/cuda-12.8/lib64:$LD_LIBRARY_PATH
+# export LIBRARY_PATH=/usr/local/cuda-12.8/lib64:$LIBRARY_PATH
+nvcc --verision
+
+#anaconda
+# https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/?C=M&O=D  bash xxx.sh 安装anaconda 
+# export PATH="$HOME/anaconda3/bin:$PATH"
+echo ". /home/robot/anaconda3/etc/profile.d/conda.sh" >> ~/.bashrc
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+conda config --set show_channel_urls yes
