@@ -51,12 +51,12 @@
 | Zread        | [Zread](https://zread.ai/)                              |      |
 | 论文翻译     | [论文翻译](https://www.julyedu.com/#exercise-container) |      |
 
-| 其他            |                                                              |      |
-| --------------- | ------------------------------------------------------------ | ---- |
-| isaac-slam      | [isaac_ros_visual_slam与Isaac ROS Nvblox](https://www.bilibili.com/video/BV14jBRYNE93/?spm_id_from=333.337.search-card.all.click&vd_source=d91bffd2a7a6acff9ff536f2f1332429) |      |
-| 导航            | [NavRL](https://github.com/Zhefan-Xu/NavRL)                  |      |
-| lerobot框架剖析 | [古月居](https://www.guyuehome.com/detail?id=1938233439339741186) |      |
-|                 |                                                              |      |
-|                 |                                                              |      |
-|                 |                                                              |      |
+| 其他                            |                                                              |      |
+| ------------------------------- | ------------------------------------------------------------ | ---- |
+| isaac-slam                      | [isaac_ros_visual_slam与Isaac ROS Nvblox](https://www.bilibili.com/video/BV14jBRYNE93/?spm_id_from=333.337.search-card.all.click&vd_source=d91bffd2a7a6acff9ff536f2f1332429) |      |
+| 导航                            | [NavRL](https://github.com/Zhefan-Xu/NavRL)                  |      |
+| lerobot框架剖析                 | [古月居](https://www.guyuehome.com/detail?id=1938233439339741186) |      |
+| 手柄-ros-isaac-lerobot-数据采集 | [ur5_simulation](https://www.youtube.com/watch?v=eO5wMzw9LeQ) |      |
+|                                 |                                                              |      |
+|                                 |                                                              |      |
 
