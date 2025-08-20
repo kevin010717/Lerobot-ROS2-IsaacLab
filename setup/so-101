@@ -48,3 +48,13 @@ python -m lerobot.replay \
     --robot.id=my_awesome_follower_arm \
     --dataset.repo_id=seeedstudio123/test \
     --dataset.episode=0
+
+python -m lerobot.scripts.train \
+  --dataset.repo_id=seeedstudio123/test \
+  --policy.type=act \
+  --output_dir=outputs/train/act_so101_test \
+  --job_name=act_so101_test \
+  --policy.device=cuda \
+  --wandb.enable=false \
+  --policy.push_to_hub=false\
+  --steps=300000 
