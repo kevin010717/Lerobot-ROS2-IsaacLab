@@ -1,0 +1,5 @@
+sudo apt install nvtop tmux -y
+tmux new -s train
+ctl+b d
+tmux attach -t train
+
