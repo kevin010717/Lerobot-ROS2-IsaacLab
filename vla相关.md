@@ -11,6 +11,7 @@
 | 框架-lerobot             | [GitHub](https://github.com/huggingface/lerobot)   [any4lerobot](https://github.com/Tavish9/any4lerobot)   [unitree_IL_lerobot](https://github.com/unitreerobotics/unitree_IL_lerobot)   [古月居](https://www.guyuehome.com/detail?id=1938233439339741186) |      |
 | 框架-leisaac             | [GitHub](https://github.com/LightwheelAI/leisaac/tree/main)  |      |
 | 框架-isaacsim            | [nvidia](https://github.com/Lifelong-Robot-Learning/LIBERO)   [unitree_sim_isaaclab](https://github.com/unitreerobotics/unitree_sim_isaaclab/tree/main)   [unitree_rl_lab](https://github.com/unitreerobotics/unitree_rl_lab) |      |
+| 框架-mimicgen            | [mimicgen](https://github.com/NVlabs/mimicgen)               |      |
 | 框架-SimplerEnv          | [GitHub](https://github.com/simpler-env/SimplerEnv?tab=readme-ov-file) |      |
 | 框架-OpenUSD             | [GitHub](https://github.com/PixarAnimationStudios/OpenUSD)   |      |
 |                          |                                                              |      |
