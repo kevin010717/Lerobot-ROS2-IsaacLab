@@ -3,14 +3,17 @@
 | isaac-slam                      | [isaac_ros_visual_slam与Isaac ROS Nvblox](https://www.bilibili.com/video/BV14jBRYNE93/?spm_id_from=333.337.search-card.all.click&vd_source=d91bffd2a7a6acff9ff536f2f1332429) |      |
 | 导航                            | [NavRL](https://github.com/Zhefan-Xu/NavRL)                  |      |
 | 手柄-ros-isaac-lerobot-数据采集 | [ur5_simulation](https://www.youtube.com/watch?v=eO5wMzw9LeQ) |      |
-|                                 |                                                              |      |
-|                                 |                                                              |      |
+|                                 | [Probabilistic Diffusion Model_bilibili](https://www.bilibili.com/video/BV1b541197HX/?vd_source=d91bffd2a7a6acff9ff536f2f1332429)   [Diffusion Models-Lilian Weng](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/) |      |
+|                                 | [LeRobot框架设计与架构深度剖析：从入门到精通](https://www.guyuehome.com/detail?id=1938233439339741186) |      |
+
+
 
 | VLA                      | 链接                                                         | 描述 |
 | ------------------------ | ------------------------------------------------------------ | ---- |
 | 框架-lerobot             | [GitHub](https://github.com/huggingface/lerobot)   [any4lerobot](https://github.com/Tavish9/any4lerobot)   [unitree_IL_lerobot](https://github.com/unitreerobotics/unitree_IL_lerobot)   [古月居](https://www.guyuehome.com/detail?id=1938233439339741186) |      |
 | 框架-leisaac             | [GitHub](https://github.com/LightwheelAI/leisaac/tree/main)  |      |
-| 框架-isaacsim            | [nvidia](https://github.com/Lifelong-Robot-Learning/LIBERO)   [unitree_sim_isaaclab](https://github.com/unitreerobotics/unitree_sim_isaaclab/tree/main)   [unitree_rl_lab](https://github.com/unitreerobotics/unitree_rl_lab) |      |
+| 框架-isaacsim            | [nvidia](https://github.com/Lifelong-Robot-Learning/LIBERO)   [unitree_sim_isaaclab](https://github.com/unitreerobotics/unitree_sim_isaaclab/tree/main)   [unitree_rl_lab](https://github.com/unitreerobotics/unitree_rl_lab)   [isaac相关](https://www.bilibili.com/video/BV18J3FzfEL6/?spm_id_from=333.337.search-card.all.click&vd_source=d91bffd2a7a6acff9ff536f2f1332429)   [Isaacsim机器狗ros](https://www.bilibili.com/video/BV1HsSiYNEvZ/?spm_id_from=333.337.search-card.all.click&vd_source=d91bffd2a7a6acff9ff536f2f1332429)   [isaacsim四足](https://www.bilibili.com/video/BV1WQJ8zZEaV?spm_id_from=333.788.videopod.sections&vd_source=d91bffd2a7a6acff9ff536f2f1332429) |      |
+| 框架-mimicgen            | [mimicgen](https://github.com/NVlabs/mimicgen)               |      |
 | 框架-SimplerEnv          | [GitHub](https://github.com/simpler-env/SimplerEnv?tab=readme-ov-file) |      |
 | 框架-OpenUSD             | [GitHub](https://github.com/PixarAnimationStudios/OpenUSD)   |      |
 |                          |                                                              |      |
@@ -58,4 +61,3 @@
 | AutoDL       | [AutoDL](https://www.autodl.com/machine/list)           |      |
 | Zread        | [Zread](https://zread.ai/)                              |      |
 | 论文翻译     | [论文翻译](https://www.julyedu.com/#exercise-container) |      |
-
