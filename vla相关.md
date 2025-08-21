@@ -4,7 +4,7 @@
 | 导航                            | [NavRL](https://github.com/Zhefan-Xu/NavRL)                  |      |
 | 手柄-ros-isaac-lerobot-数据采集 | [ur5_simulation](https://www.youtube.com/watch?v=eO5wMzw9LeQ) |      |
 |                                 | [Probabilistic Diffusion Model_bilibili](https://www.bilibili.com/video/BV1b541197HX/?vd_source=d91bffd2a7a6acff9ff536f2f1332429)   [Diffusion Models-Lilian Weng](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/) |      |
-|                                 |                                                              |      |
+|                                 | [LeRobot框架设计与架构深度剖析：从入门到精通](https://www.guyuehome.com/detail?id=1938233439339741186) |      |
 
 
 
