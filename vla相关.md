@@ -1,10 +1,20 @@
-| 其他                            |                                                              |      |
-| ------------------------------- | ------------------------------------------------------------ | ---- |
-| isaac-slam                      | [isaac_ros_visual_slam与Isaac ROS Nvblox](https://www.bilibili.com/video/BV14jBRYNE93/?spm_id_from=333.337.search-card.all.click&vd_source=d91bffd2a7a6acff9ff536f2f1332429) |      |
-| 导航                            | [NavRL](https://github.com/Zhefan-Xu/NavRL)                  |      |
-| 手柄-ros-isaac-lerobot-数据采集 | [ur5_simulation](https://www.youtube.com/watch?v=eO5wMzw9LeQ) |      |
-|                                 | [Probabilistic Diffusion Model_bilibili](https://www.bilibili.com/video/BV1b541197HX/?vd_source=d91bffd2a7a6acff9ff536f2f1332429)   [Diffusion Models-Lilian Weng](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/) |      |
-|                                 | [LeRobot框架设计与架构深度剖析：从入门到精通](https://www.guyuehome.com/detail?id=1938233439339741186) |      |
+
+
+# 导航
+
+| 常用         | 链接                                                         |      |
+| ------------ | ------------------------------------------------------------ | ---- |
+| Hugging Face | [Hugging Face](https://huggingface.co/)                      |      |
+| 魔搭社区     | [魔搭社区](https://modelscope.cn/my/overview)                |      |
+| CodeWithGPU  | [CodeWithGPU](https://www.codewithgpu.com/image)             |      |
+| AutoDL       | [AutoDL](https://www.autodl.com/machine/list)                |      |
+| Zread        | [Zread](https://zread.ai/)                                   |      |
+| 论文翻译     | [论文翻译](https://www.julyedu.com/#exercise-container)      |      |
+| Aizex        | [Aizex](https://aizex.net/plusPool)                          |      |
+| 尤里卡       | [尤里卡](https://dcntch0yoc4t.feishu.cn/next/messenger)      |      |
+|              |                                                              |      |
+| diffusion    | [Probabilistic Diffusion Model_bilibili](https://www.bilibili.com/video/BV1b541197HX/?vd_source=d91bffd2a7a6acff9ff536f2f1332429)   [Diffusion Models-Lilian Weng](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/) |      |
+| lerobot      | [LeRobot框架设计与架构深度剖析：从入门到精通](https://www.guyuehome.com/detail?id=1938233439339741186) |      |
 
 
 
@@ -40,6 +50,8 @@
 | 资料-深蓝学院            | [深蓝学院](https://www.shenlanxueyuan.com/)                  |      |
 | 资料-Embodied-AI-Guide   | [Embodied-AI-Guide](https://github.com/TianxingChen/Embodied-AI-Guide) |      |
 
+
+
 | so-101   | 链接                                                         |      |
 | -------- | ------------------------------------------------------------ | ---- |
 | 安装     | [seeed网页](https://wiki.seeedstudio.com/cn/lerobot_so100m_new/#数据集制作采集) |      |
@@ -53,11 +65,10 @@
 | 训练     | [groot n1.5](https://zhuanlan.zhihu.com/p/1938339457687356969) |      |
 | 工具     | [ROS 2 Package for LeRobot SO-ARM101](https://github.com/Pavankv92/lerobot_ws) |      |
 
-| 大模型       | 链接                                                    |      |
-| ------------ | ------------------------------------------------------- | ---- |
-| Hugging Face | [Hugging Face](https://huggingface.co/)                 |      |
-| 魔搭社区     | [魔搭社区](https://modelscope.cn/my/overview)           |      |
-| CodeWithGPU  | [CodeWithGPU](https://www.codewithgpu.com/image)        |      |
-| AutoDL       | [AutoDL](https://www.autodl.com/machine/list)           |      |
-| Zread        | [Zread](https://zread.ai/)                              |      |
-| 论文翻译     | [论文翻译](https://www.julyedu.com/#exercise-container) |      |
+
+
+| 其他                            |                                                              |      |
+| ------------------------------- | ------------------------------------------------------------ | ---- |
+| isaac-slam                      | [isaac_ros_visual_slam与Isaac ROS Nvblox](https://www.bilibili.com/video/BV14jBRYNE93/?spm_id_from=333.337.search-card.all.click&vd_source=d91bffd2a7a6acff9ff536f2f1332429) |      |
+| 导航                            | [NavRL](https://github.com/Zhefan-Xu/NavRL)                  |      |
+| 手柄-ros-isaac-lerobot-数据采集 | [ur5_simulation](https://www.youtube.com/watch?v=eO5wMzw9LeQ) |      |
