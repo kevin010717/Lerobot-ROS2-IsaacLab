@@ -1,5 +1,3 @@
-
-
 # 导航
 
 | 常用         | 链接                                                         |      |
@@ -18,37 +16,40 @@
 
 
 
-| VLA                      | 链接                                                         | 描述 |
-| ------------------------ | ------------------------------------------------------------ | ---- |
-| 框架-lerobot             | [GitHub](https://github.com/huggingface/lerobot)   [any4lerobot](https://github.com/Tavish9/any4lerobot)   [unitree_IL_lerobot](https://github.com/unitreerobotics/unitree_IL_lerobot)   [古月居](https://www.guyuehome.com/detail?id=1938233439339741186) |      |
-| 框架-leisaac             | [GitHub](https://github.com/LightwheelAI/leisaac/tree/main)  |      |
-| 框架-isaacsim            | [nvidia](https://github.com/Lifelong-Robot-Learning/LIBERO)   [unitree_sim_isaaclab](https://github.com/unitreerobotics/unitree_sim_isaaclab/tree/main)   [unitree_rl_lab](https://github.com/unitreerobotics/unitree_rl_lab)   [isaac相关](https://www.bilibili.com/video/BV18J3FzfEL6/?spm_id_from=333.337.search-card.all.click&vd_source=d91bffd2a7a6acff9ff536f2f1332429)   [Isaacsim机器狗ros](https://www.bilibili.com/video/BV1HsSiYNEvZ/?spm_id_from=333.337.search-card.all.click&vd_source=d91bffd2a7a6acff9ff536f2f1332429)   [isaacsim四足](https://www.bilibili.com/video/BV1WQJ8zZEaV?spm_id_from=333.788.videopod.sections&vd_source=d91bffd2a7a6acff9ff536f2f1332429) |      |
-| 框架-mimicgen            | [mimicgen](https://github.com/NVlabs/mimicgen)               |      |
-| 框架-SimplerEnv          | [GitHub](https://github.com/simpler-env/SimplerEnv?tab=readme-ov-file) |      |
-| 框架-OpenUSD             | [GitHub](https://github.com/PixarAnimationStudios/OpenUSD)   |      |
-|                          |                                                              |      |
-| 模型-openpi              | [GitHub](https://github.com/Physical-Intelligence/openpi)    |      |
-| 模型-ReKep               | [GitHub](https://github.com/huangwl18/ReKep)                 |      |
-| 模型-openvla             | [GitHub](https://github.com/openvla/openvla)                 |      |
-| 模型-smolvla             | [lerobot训练](https://huggingface.co/blog/smolvla)           |      |
-| 模型-GR00T N1.5          | [GitHub](https://github.com/NVIDIA/Isaac-GR00T)  [lerobot训练](https://huggingface.co/blog/nvidia/gr00t-n1-5-so101-tuning)   [古月居](https://www.guyuehome.com/detail?id=1943901579843272705) |      |
-| 模型-worldvla-G0         | [OpenGalaxea/G0](https://github.com/OpenGalaxea/G0/tree/main) |      |
-|                          |                                                              |      |
-| 数据集-open_x_embodiment | [open_x_embodiment](https://github.com/google-deepmind/open_x_embodiment) |      |
-| 数据集-libero            | [GitHub](https://github.com/Lifelong-Robot-Learning/LIBERO)  |      |
-|                          |                                                              |      |
-| 公司-宇树科技            | [宇树科技](https://www.unitree.com/cn)                       |      |
-| 公司-上海智元            | [上海智元](https://www.zhiyuan-robot.com/)                   |      |
-| 公司-DeepMind            | [DeepMind](https://deepmind.google/discover/blog/)           |      |
-| 公司-OpenLoong           | [OpenLoong](https://www.openloong.org.cn/cn)                 |      |
-|                          |                                                              |      |
-| 资料-尤里卡              | [飞书](https://dcntch0yoc4t.feishu.cn/next/messenger)        |      |
-| 资料-敢敢のwings         | [敢敢のwings](https://www.guyuehome.com/userDetail?id=1824721785539334146) |      |
-| 资料-v_JULY_v            | [博主-v_JULY_v](https://blog.csdn.net/v_JULY_v?type=blog)    |      |
-| 资料-机器人与具身智能    | [专栏-机器人与具身智能](https://blog.csdn.net/2506_90492529/category_12978237.html) |      |
-| 资料-七月在线            | [七月在线](https://www.julyedu.com/)                         |      |
-| 资料-深蓝学院            | [深蓝学院](https://www.shenlanxueyuan.com/)                  |      |
-| 资料-Embodied-AI-Guide   | [Embodied-AI-Guide](https://github.com/TianxingChen/Embodied-AI-Guide) |      |
+| VLA                      | 链接                                                         | 描述                                           |
+| ------------------------ | ------------------------------------------------------------ | ---------------------------------------------- |
+| 框架-lerobot             | [GitHub](https://github.com/huggingface/lerobot)   [any4lerobot](https://github.com/Tavish9/any4lerobot)   [unitree_IL_lerobot](https://github.com/unitreerobotics/unitree_IL_lerobot)   [古月居](https://www.guyuehome.com/detail?id=1938233439339741186) |                                                |
+| 框架-leisaac             | [GitHub](https://github.com/LightwheelAI/leisaac/tree/main)  |                                                |
+| 框架-isaacsim            | [nvidia](https://github.com/Lifelong-Robot-Learning/LIBERO)   [unitree_sim_isaaclab](https://github.com/unitreerobotics/unitree_sim_isaaclab/tree/main)   [unitree_rl_lab](https://github.com/unitreerobotics/unitree_rl_lab)   [isaac相关](https://www.bilibili.com/video/BV18J3FzfEL6/?spm_id_from=333.337.search-card.all.click&vd_source=d91bffd2a7a6acff9ff536f2f1332429)   [Isaacsim机器狗ros](https://www.bilibili.com/video/BV1HsSiYNEvZ/?spm_id_from=333.337.search-card.all.click&vd_source=d91bffd2a7a6acff9ff536f2f1332429)   [isaacsim四足](https://www.bilibili.com/video/BV1WQJ8zZEaV?spm_id_from=333.788.videopod.sections&vd_source=d91bffd2a7a6acff9ff536f2f1332429) |                                                |
+| 框架-mimicgen            | [mimicgen](https://github.com/NVlabs/mimicgen)               |                                                |
+| 框架-SimplerEnv          | [GitHub](https://github.com/simpler-env/SimplerEnv?tab=readme-ov-file) |                                                |
+| 框架-OpenUSD             | [GitHub](https://github.com/PixarAnimationStudios/OpenUSD)   |                                                |
+| 框架-ASAP                | [ASAP](https://github.com/LeCAR-Lab/ASAP)                    | 协调模拟和现实世界的物理学习敏捷的人形全身技能 |
+|                          |                                                              |                                                |
+| 模型-openpi              | [GitHub](https://github.com/Physical-Intelligence/openpi)    |                                                |
+| 模型-ReKep               | [GitHub](https://github.com/huangwl18/ReKep)                 |                                                |
+| 模型-openvla             | [GitHub](https://github.com/openvla/openvla)                 |                                                |
+| 模型-smolvla             | [lerobot训练](https://huggingface.co/blog/smolvla)           |                                                |
+| 模型-GR00T N1.5          | [GitHub](https://github.com/NVIDIA/Isaac-GR00T)  [lerobot训练](https://huggingface.co/blog/nvidia/gr00t-n1-5-so101-tuning)   [古月居](https://www.guyuehome.com/detail?id=1943901579843272705) |                                                |
+| 模型-worldvla-G0         | [OpenGalaxea/G0](https://github.com/OpenGalaxea/G0/tree/main) |                                                |
+|                          |                                                              |                                                |
+| 数据集-open_x_embodiment | [open_x_embodiment](https://github.com/google-deepmind/open_x_embodiment) |                                                |
+| 数据集-libero            | [GitHub](https://github.com/Lifelong-Robot-Learning/LIBERO)  |                                                |
+| 数据集-ArtVIP            | [ArtVIP](https://huggingface.co/datasets/x-humanoid-robomind/ArtVIP/tree/main) |                                                |
+| work-r-labs              | [work-r-labs](https://github.com/work-r-labs/robots)         |                                                |
+|                          |                                                              |                                                |
+| 公司-宇树科技            | [宇树科技](https://www.unitree.com/cn)                       |                                                |
+| 公司-上海智元            | [上海智元](https://www.zhiyuan-robot.com/)                   |                                                |
+| 公司-DeepMind            | [DeepMind](https://deepmind.google/discover/blog/)           |                                                |
+| 公司-OpenLoong           | [OpenLoong](https://www.openloong.org.cn/cn)                 |                                                |
+|                          |                                                              |                                                |
+| 资料-尤里卡              | [飞书](https://dcntch0yoc4t.feishu.cn/next/messenger)        |                                                |
+| 资料-敢敢のwings         | [敢敢のwings](https://www.guyuehome.com/userDetail?id=1824721785539334146) |                                                |
+| 资料-v_JULY_v            | [博主-v_JULY_v](https://blog.csdn.net/v_JULY_v?type=blog)    |                                                |
+| 资料-机器人与具身智能    | [专栏-机器人与具身智能](https://blog.csdn.net/2506_90492529/category_12978237.html) |                                                |
+| 资料-七月在线            | [七月在线](https://www.julyedu.com/)                         |                                                |
+| 资料-深蓝学院            | [深蓝学院](https://www.shenlanxueyuan.com/)                  |                                                |
+| 资料-Embodied-AI-Guide   | [Embodied-AI-Guide](https://github.com/TianxingChen/Embodied-AI-Guide) |                                                |
 
 
 
