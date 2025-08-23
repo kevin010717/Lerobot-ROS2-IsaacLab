@@ -1,3 +1,5 @@
+git clone https://github.com/kevin010717/ros2_cr5_sim_ws.git
+cd ros2_cr5_sim_ws
 rm -rf build/ install/ log/
 colcon build --packages-select python_general_pkg
 source ~/ros2_cr5_sim_ws/install/setup.zsh 
