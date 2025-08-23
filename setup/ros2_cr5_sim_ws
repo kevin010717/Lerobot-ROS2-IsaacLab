@@ -1,2 +1,4 @@
 rm -rf build/ install/ log/
+colcon build --packages-select python_general_pkg
 source ~/ros2_cr5_sim_ws/install/setup.zsh 
+ros2 run python_general_pkg simple_publisher_node
