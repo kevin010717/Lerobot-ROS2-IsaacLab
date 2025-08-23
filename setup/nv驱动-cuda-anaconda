@@ -5,7 +5,9 @@ sudo apt install gcc git
 
 # nvidia-575
 ubuntu-drivers devices
+sudo ubuntu-drivers autoinstall
 sudo apt install nvidia-driver-575-open
+sudo apt install nvidia-driver-550
 sudo dmesg | grep -i nvidia
 
 
