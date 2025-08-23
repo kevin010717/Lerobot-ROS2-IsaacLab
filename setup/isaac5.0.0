@@ -24,3 +24,5 @@ conda env update -f env_isaaclab_backup.yml
 
 # ros2 hummble
 source <(wget -qO- http://fishros.com/install)
+source /opt/ros/humble/setup.zsh 
+
