@@ -1,3 +1,5 @@
+git clone https://github.com/kevin010717/ur5_simulation.git
+cd ur5_simulation
 sudo apt-get install -y ros-humble-ros-testing
 cd ~/ur5_simulation   # 你的工作区根目录
 rm -rf build/moveit_servo install/moveit_servo log
