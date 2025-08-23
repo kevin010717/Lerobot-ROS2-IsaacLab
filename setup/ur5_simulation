@@ -1,16 +1,32 @@
+sudo apt-get install -y \
+ros-humble-ros-testing \
+ros-humble-moveit \
+ros-humble-moveit-common \
+ros-humble-control-toolbox \
+ros-humble-ros2-control \
+ros-humble-ros2-controllers
+ros-humble-ros-base \
+ros-humble-rmw-fastrtps-cpp \
+ros-humble-rmw-cyclonedds-cpp
+
+conda create -n ros2 python=3.10
+conda activate ros2
+pip install catkin_pkg
+pip3 install --user --upgrade --force-reinstall "numpy==1.24.4"
+pip3 install pandas pyarrow
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+export LD_LIBRARY_PATH=/opt/ros/humble/lib:$LD_LIBRARY_PATH
+export ROS_DOMAIN_ID=0
+
+
 git clone https://github.com/kevin010717/ur5_simulation.git
 cd ur5_simulation
-sudo apt-get install -y ros-humble-ros-testing ros-humble-moveit ros-humble-moveit-common
 
 cd ~/ur5_simulation   # 你的工作区根目录
-rm -rf moveit_servo moveit_servo log
+rm -rf install build log
 colcon build --packages-select moveit_servo
 # 若成功，再不选包地全量构建
 colcon build
-
-pip3 install --user --upgrade --force-reinstall "numpy==1.24.4"
-pip3 install pandas pyarrow
-
 
 source ~/ur5_simulation/install/setup.zsh
 ros2 launch ur5_moveit_config arm_joy_control.launch.py
