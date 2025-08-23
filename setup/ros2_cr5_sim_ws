@@ -1,2 +1,2 @@
 rm -rf build/ install/ log/
-source ~/install/setup.zsh
+source ~/ros2_cr5_sim_ws/install/setup.zsh 
