@@ -9,6 +9,8 @@ sudo ubuntu-drivers autoinstall
 sudo apt install nvidia-driver-575-open
 sudo apt install nvidia-driver-550
 sudo dmesg | grep -i nvidia
+sudo apt purge 'nvidia*'
+
 
 
 # cuda=12.8
