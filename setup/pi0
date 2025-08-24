@@ -1,6 +1,7 @@
 # openpi-uv下openpi安装
 conda create -n uv_envs python=3.10
 conda activate uv_envs
+pip install uv
 git clone --recurse-submodules https://github.com/Physical-Intelligence/openpi.git
 cd ~/openpi 
 GIT_LFS_SKIP_SMUDGE=1 uv sync
