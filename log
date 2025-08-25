@@ -1,6 +1,18 @@
 20250818-20250814
 工作计划：
     VLA调研:
+        lerobot汇报.ppt  lerobot汇报.md
+    仿真：
+        键盘控制cr5模型
+工作事项：
+工作汇报：
+    VLA调研:
+    仿真：
+
+
+20250818-20250814
+工作计划：
+    VLA调研:
         lerobot汇报.ppt
     仿真：
         urdf模型导入isaac
@@ -11,6 +23,11 @@
     libero环境搭建
     资料梳理
 工作汇报：
+    VLA调研:
+        lerobot框架学习，数据结构学习
+    仿真：
+        cr5模型导入isaac
+        ros2与isaac通信demo
     
 
 20250811-20250817
