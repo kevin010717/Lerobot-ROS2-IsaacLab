@@ -41,6 +41,7 @@
 | 模型-worldvla-G0         | [OpenGalaxea/G0](https://github.com/OpenGalaxea/G0/tree/main) |                                                   |
 | 模型-Mobile ALOHA        | [Mobile ALOHA](https://mobile-aloha.github.io/cn.html)       |                                                   |
 | 模型-RoboAgent           | [RoboAgent](https://robopen.github.io/)                      |                                                   |
+| 模型-molmoact            | [molmoact](https://allenai.org/blog/molmoact)                |                                                   |
 |                          |                                                              |                                                   |
 | 数据集-open_x_embodiment | [open_x_embodiment](https://github.com/google-deepmind/open_x_embodiment) |                                                   |
 | 数据集-libero            | [GitHub](https://github.com/Lifelong-Robot-Learning/LIBERO)  |                                                   |
