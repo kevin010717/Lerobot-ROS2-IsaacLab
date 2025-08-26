@@ -14,7 +14,7 @@
 | diffusion    | [Probabilistic Diffusion Model_bilibili](https://www.bilibili.com/video/BV1b541197HX/?vd_source=d91bffd2a7a6acff9ff536f2f1332429)   [Diffusion Models-Lilian Weng](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/) |                                    |
 | lerobot      | [LeRobot框架设计与架构深度剖析：从入门到精通](https://www.guyuehome.com/detail?id=1938233439339741186) |                                    |
 |              | [GR00T N1.5 for SO-101 Arm](https://huggingface.co/blog/nvidia/gr00t-n1-5-so101-tuning) |                                    |
-|              |                                                              |                                    |
+|              | [论文CVPR2025](https://www.bilibili.com/video/BV1xHXsYnE68?spm_id_from=333.788.player.player_end_recommend_autoplay&vd_source=d91bffd2a7a6acff9ff536f2f1332429) |                                    |
 |              |                                                              |                                    |
 
 
@@ -31,7 +31,7 @@
 | 框架-Gymnasium           | [Gymnasium](https://github.com/Farama-Foundation/Gymnasium)  |                                                   |
 | 框架-robomimic           | [robomimic](https://robomimic.github.io/)                    |                                                   |
 | 框架-maniskill           | [maniskill](https://www.maniskill.ai/)                       |                                                   |
-| 框架-BEHAVIOR                 | [BEHAVIOR](https://behavior.stanford.edu/index.html)         | simulation benchmark grounded in real human needs |
+| 框架-BEHAVIOR            | [BEHAVIOR](https://behavior.stanford.edu/index.html)         | simulation benchmark grounded in real human needs |
 |                          |                                                              |                                                   |
 | 模型-openpi              | [GitHub](https://github.com/Physical-Intelligence/openpi)    |                                                   |
 | 模型-ReKep               | [GitHub](https://github.com/huangwl18/ReKep)                 |                                                   |
