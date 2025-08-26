@@ -31,7 +31,7 @@
 | 框架-Gymnasium           | [Gymnasium](https://github.com/Farama-Foundation/Gymnasium)  |                                                   |
 | 框架-robomimic           | [robomimic](https://robomimic.github.io/)                    |                                                   |
 | 框架-maniskill           | [maniskill](https://www.maniskill.ai/)                       |                                                   |
-| BEHAVIOR                 | [BEHAVIOR](https://behavior.stanford.edu/index.html)         | simulation benchmark grounded in real human needs |
+| 框架-BEHAVIOR                 | [BEHAVIOR](https://behavior.stanford.edu/index.html)         | simulation benchmark grounded in real human needs |
 |                          |                                                              |                                                   |
 | 模型-openpi              | [GitHub](https://github.com/Physical-Intelligence/openpi)    |                                                   |
 | 模型-ReKep               | [GitHub](https://github.com/huangwl18/ReKep)                 |                                                   |
