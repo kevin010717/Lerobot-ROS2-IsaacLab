@@ -17,3 +17,13 @@ git checkout v2.1.1
 git clone https://github.com/LightwheelAI/leisaac.git
 cd leisaac
 pip install -e source/leisaac
+
+sudo chmod 666 /dev/ttyACM0
+python ~/leisaac/scripts/environments/teleoperation/replay.py \
+    --task=LeIsaac-SO101-PickOrange-v0 \
+    --num_envs=1 \
+    --device=cuda \
+    --enable_cameras \
+    --replay_mode=action \
+    --dataset_file=./datasets/dataset.hdf5 \
+    --select_episodes 1 2
