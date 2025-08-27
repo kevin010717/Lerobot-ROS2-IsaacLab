@@ -13,3 +13,7 @@ sudo apt install cmake build-essential
 cd IsaacLab
 git checkout v2.1.1
 ./isaaclab.sh --install
+
+git clone https://github.com/LightwheelAI/leisaac.git
+cd leisaac
+pip install -e source/leisaac
