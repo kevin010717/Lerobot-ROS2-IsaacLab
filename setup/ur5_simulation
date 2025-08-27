@@ -35,3 +35,23 @@ python3 ~/ur5_simulation/src/data_collection/scripts/data_collection.py
 
 ros2 launch ur5_moveit_config arm_difussion_control.launch.py
 python ~/lerobot/examples/2_evaluate_pretrained_policy_ROS.py
+
+# 模型导入
+1.导入urdf
+2.world(or base-link)-add-physics-articulation root
+3.joint maxforce-1000000 stiffness-200000
+4.import table.urdf tbar.urdf
+5.physic scene-time step per second-100
+6.tbar-add-colidders preset
+7.wrist-link-add-colidders preset
+8.action graph
+  1.import graphs and connect
+  2.set domain topicname
+  3.articulation controler-add target-world(base-link)
+9.create two cameras
+10.tools-robotics-ros2 ominigraph-camera-add-topcamera
+11.tools-robotics-ros2 ominigraph-camera-add-wristcamera
+12.tools-robotics-ros2 ominigraph-tf Publisher-topicname-add target prim(tool tbar)
+13.World-create-physics-physics material-rigid body material-extra -propeties
+14.tbar-select physic material
+15.tool-select physic material
