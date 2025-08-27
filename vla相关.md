@@ -11,6 +11,9 @@
 | Aizex        | [Aizex](https://aizex.net/plusPool)                          |                                    |
 | 尤里卡       | [尤里卡](https://dcntch0yoc4t.feishu.cn/next/messenger)      |                                    |
 | Nvidia-GEAR  | [Nvidia-GEAR](https://research.nvidia.com/labs/gear/)        | Generalist Embodied Agent Research |
+| 智源         | [FlagOpen-智源](https://github.com/FlagOpen)                 |                                    |
+| 波士顿动力   | [Boston Dynamics](https://bostondynamics.com/)               |                                    |
+| Figure       | [Figure](https://www.figure.ai/)                             |                                    |
 | diffusion    | [Probabilistic Diffusion Model_bilibili](https://www.bilibili.com/video/BV1b541197HX/?vd_source=d91bffd2a7a6acff9ff536f2f1332429)   [Diffusion Models-Lilian Weng](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/) |                                    |
 | lerobot      | [LeRobot框架设计与架构深度剖析：从入门到精通](https://www.guyuehome.com/detail?id=1938233439339741186) |                                    |
 |              | [GR00T N1.5 for SO-101 Arm](https://huggingface.co/blog/nvidia/gr00t-n1-5-so101-tuning) |                                    |
@@ -32,6 +35,7 @@
 | 框架-robomimic           | [robomimic](https://robomimic.github.io/)                    |                                                   |
 | 框架-maniskill           | [maniskill](https://www.maniskill.ai/)                       |                                                   |
 | 框架-BEHAVIOR            | [BEHAVIOR](https://behavior.stanford.edu/index.html)         | simulation benchmark grounded in real human needs |
+| 框架-OpenWBT             | [OpenWBT](https://github.com/GalaxyGeneralRobotics/OpenWBT/blob/main/README_zh.md) |                                                   |
 |                          |                                                              |                                                   |
 | 模型-openpi              | [GitHub](https://github.com/Physical-Intelligence/openpi)    |                                                   |
 | 模型-ReKep               | [GitHub](https://github.com/huangwl18/ReKep)                 |                                                   |
@@ -42,6 +46,8 @@
 | 模型-Mobile ALOHA        | [Mobile ALOHA](https://mobile-aloha.github.io/cn.html)       |                                                   |
 | 模型-RoboAgent           | [RoboAgent](https://robopen.github.io/)                      |                                                   |
 | 模型-molmoact            | [molmoact](https://allenai.org/blog/molmoact)                |                                                   |
+| 模型-GraspVLA            | [GraspVLA](https://github.com/PKU-EPIC/GraspVLA)             |                                                   |
+| 模型-Uni-NaVid           | [Uni-NaVid](https://pku-epic.github.io/Uni-NaVid/)           |                                                   |
 |                          |                                                              |                                                   |
 | 数据集-open_x_embodiment | [open_x_embodiment](https://github.com/google-deepmind/open_x_embodiment) |                                                   |
 | 数据集-libero            | [GitHub](https://github.com/Lifelong-Robot-Learning/LIBERO)  |                                                   |
@@ -84,3 +90,9 @@
 | isaac-slam                      | [isaac_ros_visual_slam与Isaac ROS Nvblox](https://www.bilibili.com/video/BV14jBRYNE93/?spm_id_from=333.337.search-card.all.click&vd_source=d91bffd2a7a6acff9ff536f2f1332429) |      |
 | 导航                            | [NavRL](https://github.com/Zhefan-Xu/NavRL)                  |      |
 | 手柄-ros-isaac-lerobot-数据采集 | [ur5_simulation](https://www.youtube.com/watch?v=eO5wMzw9LeQ) |      |
+
+| 强化学习                                                     |                                                              |      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ---- |
+| [DRL-Learning](https://github.com/yusongmin1/DRL-Learning)   | [flappy-bird-gym](https://github.com/Talendar/flappy-bird-gym) |      |
+| [skpacman-gym](https://github.com/CN-Shopkeeper/skpacman-gym) | [ASAP](https://github.com/LeCAR-Lab/ASAP)                    |      |
+| [asap_mujoco_sim](https://github.com/feidedao/asap_mujoco_sim/tree/main) | [ur5_simulation](https://www.youtube.com/watch?v=eO5wMzw9LeQ) |      |
