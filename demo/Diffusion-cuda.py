@@ -1,57 +1,48 @@
 # %%
 # 讲义地址 https://www.cnblogs.com/zhangbo2008/p/17341284.html
-import os
-import io
-import numpy as np
-import torch
-import torch.nn as nn
-
-# ---- 重要：在导入 pyplot 之前设置无头后端 ----
-os.environ["MPLBACKEND"] = "Agg"
-os.environ["QT_QPA_PLATFORM"] = "offscreen"
-import matplotlib
-matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-
-from PIL import Image
+import numpy as np
 from sklearn.datasets import make_s_curve
+import torch
 
-# -----------------------------
-# 0) 设备与随机种子
-# -----------------------------
-device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+# ==== 新增：设备选择（CUDA 优先，自动回退 CPU）
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print("Using device:", device)
-seed = 1234
-torch.manual_seed(seed)
-np.random.seed(seed)
-if device.type == "cuda":
-    torch.cuda.manual_seed_all(seed)
-    torch.backends.cudnn.benchmark = True  # 允许 cuDNN 选最快算法
 
-# %%
-# 1) 生成数据（在 CPU 上用 sklearn/NumPy 生成，随后按需搬到 GPU）
-s_curve, _ = make_s_curve(10**4, noise=0.1, random_state=seed)  # 生成一个三维曲线.
-s_curve = s_curve[:, [0, 2]] / 10.0  # 只取 x,y 轴.
+"""
+conda activate lerobot-MLPDiffusion
+pip uninstall -y numpy scipy scikit-learn matplotlib
+conda install -y -c conda-forge \
+  "numpy=1.26.*" \
+  "scipy>=1.10,<1.14" \
+  "scikit-learn>=1.3,<1.6" \
+  "matplotlib>=3.7,<3.9" \
+  --force-reinstall
+"""
+
+s_curve,_ = make_s_curve(10**4,noise=0.1)  # 生成一个三维曲线
+s_curve = s_curve[:,[0,2]]/10.0  # 只取 xy 轴
 print("shape of s:", np.shape(s_curve))
 
-data_np = s_curve.T  # 仅用于首次可视化
-fig, ax = plt.subplots()
-ax.scatter(data_np[0], data_np[1], color='blue', edgecolors='white')
+data = s_curve.T
+fig,ax = plt.subplots()
+ax.scatter(*data,color='blue',edgecolor='white')
 ax.axis('off')
-plt.show()  # 在 Agg 后端下不会弹窗，无碍
 
-# ---- 关键修正：数据集留在 CPU，便于 DataLoader pin_memory ----
-dataset = torch.tensor(s_curve, dtype=torch.float32)  # 不要 .to(device)
+# ==== 改动：把 dataset 放到 device
+dataset = torch.tensor(s_curve, dtype=torch.float32, device=device)
+
+# %% [markdown]
+# 2、确定超参数的值
 
 # %%
-# 2) 超参数
 num_steps = 100
 
-# 制定每一步的 beta（直接在目标设备上创建）
+# 制定每一步的 beta  （在 device 上创建）
 betas = torch.linspace(-6, 6, num_steps, device=device)
-betas = torch.sigmoid(betas) * (0.5e-2 - 1e-5) + 1e-5  # 一堆 ~1e-5 的数
+betas = torch.sigmoid(betas) * (0.5e-2 - 1e-5) + 1e-5
 
-# 计算 alpha 系列变量（全部放在 device）
+# 计算 alpha、alpha_prod、alpha_prod_previous、alpha_bar_sqrt 等变量
 alphas = 1 - betas
 alphas_prod = torch.cumprod(alphas, 0)
 alphas_prod_p = torch.cat([torch.tensor([1.0], device=device), alphas_prod[:-1]], 0)
@@ -59,49 +50,56 @@ alphas_bar_sqrt = torch.sqrt(alphas_prod)
 one_minus_alphas_bar_log = torch.log(1 - alphas_prod)
 one_minus_alphas_bar_sqrt = torch.sqrt(1 - alphas_prod)
 
-assert (
-    alphas.shape == alphas_prod.shape == alphas_prod_p.shape ==
-    alphas_bar_sqrt.shape == one_minus_alphas_bar_log.shape ==
-    one_minus_alphas_bar_sqrt.shape
-)
+assert alphas.shape==alphas_prod.shape==alphas_prod_p.shape==\
+alphas_bar_sqrt.shape==one_minus_alphas_bar_log.shape==one_minus_alphas_bar_sqrt.shape
 print("all the same shape", betas.shape)
 
+# %% [markdown]
+# 3、确定扩散过程任意时刻的采样值
+
 # %%
-# 3) 任意时刻的采样
+# 计算任意时刻的 x 采样值，基于 x_0 和重参数化
 def q_x(x_0, t):
-    """基于 x[0] 得到任意时刻 t 的 x[t]；x_0, 返回张量均在当前 device"""
-    noise = torch.randn_like(x_0)
+    """可以基于 x[0] 得到任意时刻 t 的 x[t]"""
+    # 保证 t 在正确设备、整型
+    if not torch.is_tensor(t):
+        t = torch.tensor([t], device=device)
+    else:
+        t = t.to(device)
+    t = t.long()
+
+    noise = torch.randn_like(x_0)  # 与 x_0 同设备
     alphas_t = alphas_bar_sqrt[t]
     alphas_1_m_t = one_minus_alphas_bar_sqrt[t]
-    return alphas_t * x_0 + alphas_1_m_t * noise
+    return (alphas_t * x_0 + alphas_1_m_t * noise)
+
+# %% [markdown]
+# 4、演示原始数据分布加噪100步后的结果
 
 # %%
-# 4) 展示若干加噪步
 num_shows = 20
-fig, axs = plt.subplots(2, 10, figsize=(28, 3))
-plt.rc('text', color='black')
+fig,axs = plt.subplots(2,10,figsize=(28,3))
+plt.rc('text',color='black')
 
-# 将 CPU 的 dataset 临时搬上 device 以便计算 q_x；也可直接用 CPU 版本运算
-dataset_dev = dataset.to(device)
 for i in range(num_shows):
-    j = i // 10
-    k = i % 10
-    t_idx = torch.tensor([i * num_steps // num_shows], device=device)
-    q_i = q_x(dataset_dev, t_idx)  # 在 device 上
-    # Matplotlib 需要 CPU/NumPy
-    x = q_i[:, 0].detach().cpu().numpy()
-    y = q_i[:, 1].detach().cpu().numpy()
-    axs[j, k].scatter(x, y, color='red', edgecolors='white')
-    axs[j, k].set_axis_off()
-    axs[j, k].set_title(f'$q(\\mathbf{{x}}_{{{int(t_idx.item())}}})$')
+    j = i//10
+    k = i%10
+    q_i = q_x(dataset, torch.tensor([i*num_steps//num_shows], device=device))
+    # 为了绘图，需要搬回 CPU（.cpu().numpy()）
+    qi_cpu = q_i.detach().cpu()
+    axs[j,k].scatter(qi_cpu[:,0], qi_cpu[:,1], color='red', edgecolor='white')
+    axs[j,k].set_axis_off()
+    axs[j,k].set_title('$q(\\mathbf{x}_{'+str(i*num_steps//num_shows)+'})$')
 
-plt.show()
+# %% [markdown]
+# 5、编写拟合逆扩散过程高斯分布的模型
 
 # %%
-# 5) 逆扩散模型
+import torch.nn as nn
+
 class MLPDiffusion(nn.Module):
     def __init__(self, n_steps, num_units=128):
-        super().__init__()
+        super(MLPDiffusion, self).__init__()
         self.linears = nn.ModuleList(
             [
                 nn.Linear(2, num_units),
@@ -116,66 +114,54 @@ class MLPDiffusion(nn.Module):
         self.step_embeddings = nn.ModuleList(
             [
                 nn.Embedding(n_steps, num_units),
-            nn.Embedding(n_steps, num_units),
-            nn.Embedding(n_steps, num_units),
+                nn.Embedding(n_steps, num_units),
+                nn.Embedding(n_steps, num_units),
             ]
         )
-
     def forward(self, x, t):
-        # t: LongTensor [B] on same device
+        t = t.long()
         for idx, embedding_layer in enumerate(self.step_embeddings):
             t_embedding = embedding_layer(t)
-            x = self.linears[2 * idx](x)  # linear
+            x = self.linears[2*idx](x)
             x = x + t_embedding
-            x = self.linears[2 * idx + 1](x)  # relu
+            x = self.linears[2*idx+1](x)
         x = self.linears[-1](x)
         return x
 
+# %% [markdown]
+# 6、编写训练的误差函数
+
 # %%
-# 6) 训练的误差函数
 def diffusion_loss_fn(model, x_0, alphas_bar_sqrt, one_minus_alphas_bar_sqrt, n_steps):
-    """对任意时刻 t 采样计算 loss"""
+    """对任意时刻 t 进行采样计算 loss"""
     batch_size = x_0.shape[0]
 
-    # 生成随机时刻 t（保持在 device 上）
-    t = torch.randint(0, n_steps, size=(batch_size // 2,), device=x_0.device)
+    # 生成随机的时刻 t（在 device 上）
+    t = torch.randint(0, n_steps, size=(batch_size//2,), device=device)
     t = torch.cat([t, n_steps - 1 - t], dim=0)
-    t = t.unsqueeze(-1)  # [B,1]
+    t = t.unsqueeze(-1).long()  # [B,1]
 
     # 系数
     a = alphas_bar_sqrt[t]
     aml = one_minus_alphas_bar_sqrt[t]
 
-    # 随机噪声 eps
+    # 真实噪声
     e = torch.randn_like(x_0)
 
     # 构造模型输入
     x = x_0 * a + e * aml
 
-    # 送入模型，得到噪声预测
-    output = model(x, t.squeeze(-1).long())
+    # 预测噪声
+    output = model(x, t.squeeze(-1))
 
-    # 与真实噪声计算 MSE
     return (e - output).square().mean()
 
-# %%
-# 7) 逆扩散采样（inference）
-@torch.no_grad()
-def p_sample(model, x, t, betas, one_minus_alphas_bar_sqrt):
-    """从 x[t] 采样到 x[t-1]"""
-    # 保证标量 t 在同一设备
-    t = torch.tensor([t], device=x.device)
-    coeff = betas[t] / one_minus_alphas_bar_sqrt[t]
-    eps_theta = model(x, t.long())
-    mean = (1 / (1 - betas[t]).sqrt()) * (x - coeff * eps_theta)
-    z = torch.randn_like(x)
-    sigma_t = betas[t].sqrt()
-    sample = mean + sigma_t * z
-    return sample
+# %% [markdown]
+# 7、编写逆扩散采样函数（inference）
 
-@torch.no_grad()
-def p_sample_loop(model, shape, n_steps, betas, one_minus_alphas_bar_sqrt, device):
-    """从 x[T] 恢复 ... -> x[0]；返回每步样本列表（在 device 上）"""
+# %%
+def p_sample_loop(model, shape, n_steps, betas, one_minus_alphas_bar_sqrt):
+    """从 x[T] 恢复 x[T-1], x[T-2], ... x[0]"""
     cur_x = torch.randn(shape, device=device)
     x_seq = [cur_x]
     for i in reversed(range(n_steps)):
@@ -183,86 +169,121 @@ def p_sample_loop(model, shape, n_steps, betas, one_minus_alphas_bar_sqrt, devic
         x_seq.append(cur_x)
     return x_seq
 
+def p_sample(model, x, t, betas, one_minus_alphas_bar_sqrt):
+    """从 x[t] 采样到 x[t-1]"""
+    t = torch.tensor([t], device=device).long()
+
+    coeff = betas[t] / one_minus_alphas_bar_sqrt[t]
+    eps_theta = model(x, t)
+
+    mean = (1 / (1 - betas[t]).sqrt()) * (x - (coeff * eps_theta))
+
+    z = torch.randn_like(x)
+    sigma_t = betas[t].sqrt()
+    sample = mean + sigma_t * z
+    return sample
+
+# %% [markdown]
+# 8、开始训练模型，打印loss及中间重构效果
+
 # %%
-# 8) 训练
+seed = 1234
+
+class EMA():
+    """参数平滑器"""
+    def __init__(self, mu=0.01):
+        self.mu = mu
+        self.shadow = {}
+    def register(self, name, val):
+        self.shadow[name] = val.clone()
+    def __call__(self, name, x):
+        assert name in self.shadow
+        new_average = self.mu * x + (1.0 - self.mu) * self.shadow[name]
+        self.shadow[name] = new_average.clone()
+        return new_average
+
 print('Training model...')
 batch_size = 128
-
-# DataLoader 从 CPU 张量读取；CUDA 下 pin_memory=True 更快
-dataloader = torch.utils.data.DataLoader(
-    dataset, batch_size=batch_size, shuffle=True,
-    pin_memory=(device.type == "cuda")
-)
-
+dataloader = torch.utils.data.DataLoader(dataset, batch_size=batch_size, shuffle=True)
 num_epoch = 4000
 plt.rc('text', color='blue')
 
+# ==== 改动：模型放到 device
 model = MLPDiffusion(num_steps).to(device)
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
 
-x_seq = None  # 供后续动画使用
-for t_epoch in range(num_epoch):
-    for batch_x in dataloader:
-        # DataLoader 产出在 CPU，上 GPU
-        batch_x = batch_x.to(device, non_blocking=True)
-
+for t in range(num_epoch):
+    for idx, batch_x in enumerate(dataloader):
+        # DataLoader 已经提供的是 device 上的张量（因为 dataset 在 device 上）
         loss = diffusion_loss_fn(model, batch_x, alphas_bar_sqrt, one_minus_alphas_bar_sqrt, num_steps)
-        optimizer.zero_grad(set_to_none=True)
+        optimizer.zero_grad()
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.)
         optimizer.step()
 
-    if (t_epoch % 100) == 0:
-        print(f"[epoch {t_epoch}] loss = {loss.item():.6f}")
-        x_seq = p_sample_loop(model, dataset.shape, num_steps, betas, one_minus_alphas_bar_sqrt, device)
+    if (t % 100 == 0):
+        print(loss.item())
+        x_seq = p_sample_loop(model, dataset.shape, num_steps, betas, one_minus_alphas_bar_sqrt)
 
         fig, axs = plt.subplots(1, 10, figsize=(28, 3))
         for i in range(1, 11):
-            cur_x = x_seq[i * 10].detach()
-            xs = cur_x[:, 0].detach().cpu().numpy()
-            ys = cur_x[:, 1].detach().cpu().numpy()
-            axs[i - 1].scatter(xs, ys, color='red', edgecolors='white')
-            axs[i - 1].set_axis_off()
-            axs[i - 1].set_title(f'$q(\\mathbf{{x}}_{{{i*10}}})$')
-        plt.show()
+            cur_x = x_seq[i*10].detach().cpu()  # ==== 为绘图搬回 CPU
+            axs[i-1].scatter(cur_x[:,0], cur_x[:,1], color='red', edgecolor='white')
+            axs[i-1].set_axis_off()
+            axs[i-1].set_title('$q(\\mathbf{x}_{'+str(i*10)+'})$')
+# ===== 放在第 9 步之前 =====
+# 计算全局正方形坐标范围（基于原始数据，留 10% 边距）
+xy = dataset.detach().cpu().numpy()
+xmin, xmax = xy[:,0].min(), xy[:,0].max()
+ymin, ymax = xy[:,1].min(), xy[:,1].max()
+cx, cy = (xmin + xmax)/2.0, (ymin + ymax)/2.0
+half = max(xmax - xmin, ymax - ymin) * 0.55   # 0.5 为半径，再加 ~10% 留白
+xlim = (cx - half, cx + half)
+ylim = (cy - half, cy + half)
+# %% [markdown]
+# 9、动画演示扩散过程和逆扩散过程（固定范围+等比+固定像素）
 
-# %%
-# 9) 动画演示扩散过程和逆扩散过程
+import io
+from PIL import Image
+
+def render_frame(points_xy):
+    """生成一帧：正方形画布 + 等比坐标 + 固定范围，不裁剪"""
+    fig, ax = plt.subplots(figsize=(4, 4), dpi=120)  # 固定像素尺寸，可调
+    ax.scatter(points_xy[:,0], points_xy[:,1], s=5, color='red', edgecolor='white')
+    ax.set_xlim(*xlim)
+    ax.set_ylim(*ylim)
+    ax.set_aspect('equal', adjustable='box')         # 关键：等比坐标
+    ax.axis('off')
+    fig.subplots_adjust(0, 0, 1, 1)                  # 填满画布
+
+    buf = io.BytesIO()
+    fig.savefig(buf, format='png', pad_inches=0)     # 不要 bbox_inches='tight'
+    plt.close(fig)
+    buf.seek(0)
+    return Image.open(buf).convert("P")              # GIF 更稳更小
+
+# 正向扩散帧
 imgs = []
 for i in range(100):
-    plt.clf()
-    q_i = q_x(dataset_dev, torch.tensor([i], device=device))
-    xs = q_i[:, 0].detach().cpu().numpy()
-    ys = q_i[:, 1].detach().cpu().numpy()
-    plt.scatter(xs, ys, color='red', edgecolors='white', s=5)
-    plt.axis('off')
+    q_i = q_x(dataset, torch.tensor([i], device=device)).detach().cpu().numpy()
+    imgs.append(render_frame(q_i))
 
-    img_buf = io.BytesIO()
-    plt.savefig(img_buf, format='png')
-    img_buf.seek(0)              # 关键：回到缓冲区起始位置
-    img = Image.open(img_buf)
-    imgs.append(img)
+# 逆扩散帧（确保 x_seq 存在）
+if 'x_seq' not in locals():
+    x_seq = p_sample_loop(model, dataset.shape, num_steps, betas, one_minus_alphas_bar_sqrt)
 
 reverse = []
-if x_seq is None:
-    # 若训练循环未生成 x_seq，这里也可单独跑一遍采样用于演示
-    x_seq = p_sample_loop(model, dataset.shape, num_steps, betas, one_minus_alphas_bar_sqrt, device)
-
 for i in range(100):
-    plt.clf()
-    cur_x = x_seq[i].detach()
-    xs = cur_x[:, 0].detach().cpu().numpy()
-    ys = cur_x[:, 1].detach().cpu().numpy()
-    plt.scatter(xs, ys, color='red', edgecolors='white', s=5)
-    plt.axis('off')
+    cur_x = x_seq[i].detach().cpu().numpy()
+    reverse.append(render_frame(cur_x))
 
-    img_buf = io.BytesIO()
-    plt.savefig(img_buf, format='png')
-    img_buf.seek(0)              # 关键：回到缓冲区起始位置
-    img = Image.open(img_buf)
-    reverse.append(img)
-
-imgs = imgs + reverse
-imgs[0].save("diffusion.gif", format='GIF', append_images=imgs, save_all=True, duration=100, loop=0)
-print("Saved diffusion.gif")
-# %%
+# 合并与保存
+all_frames = imgs + reverse
+all_frames[0].save(
+    "./demo/diffusion.gif",
+    format="GIF",
+    save_all=True,
+    append_images=all_frames[1:],
+    duration=100,
+    loop=0,
+)

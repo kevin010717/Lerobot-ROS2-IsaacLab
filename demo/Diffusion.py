@@ -5,7 +5,7 @@ import numpy as np
 from sklearn.datasets import make_s_curve
 import torch
 """
-conda activate lerobot
+conda activate lerobot-MLPDiffusion
 pip uninstall -y numpy scipy scikit-learn matplotlib
 conda install -y -c conda-forge \
   "numpy=1.26.*" \
