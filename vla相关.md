@@ -20,6 +20,12 @@
 |              | [论文CVPR2025](https://www.bilibili.com/video/BV1xHXsYnE68?spm_id_from=333.788.player.player_end_recommend_autoplay&vd_source=d91bffd2a7a6acff9ff536f2f1332429) |                                    |
 |              |                                                              |                                    |
 
+| CR5AF                                                        |                                                              |      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ---- |
+| [dobot-B站](https://space.bilibili.com/671056987/lists)      | [dobot](https://www.dobot.cn/service/download-center)        |      |
+| [越疆nova5-lerobot遥操作](https://www.bilibili.com/video/BV1WnZcYhE6F?spm_id_from=333.788.recommend_more_video.3&vd_source=d91bffd2a7a6acff9ff536f2f1332429) |                                                              |      |
+| [pi0微调](https://blog.csdn.net/v_JULY_v/article/details/146125555) | [aloha](https://blog.csdn.net/v_JULY_v/article/details/135566948) |      |
+
 
 
 | VLA                      | 链接                                                         | 描述                                              |
@@ -36,6 +42,7 @@
 | 框架-maniskill           | [maniskill](https://www.maniskill.ai/)                       |                                                   |
 | 框架-BEHAVIOR            | [BEHAVIOR](https://behavior.stanford.edu/index.html)         | simulation benchmark grounded in real human needs |
 | 框架-OpenWBT             | [OpenWBT](https://github.com/GalaxyGeneralRobotics/OpenWBT/blob/main/README_zh.md) |                                                   |
+| 框架-gello               | [gello](https://github.com/wuphilipp/gello_software)         | 遥操作                                            |
 |                          |                                                              |                                                   |
 | 模型-openpi              | [GitHub](https://github.com/Physical-Intelligence/openpi)    |                                                   |
 | 模型-ReKep               | [GitHub](https://github.com/huangwl18/ReKep)                 |                                                   |
@@ -90,6 +97,8 @@
 | isaac-slam                      | [isaac_ros_visual_slam与Isaac ROS Nvblox](https://www.bilibili.com/video/BV14jBRYNE93/?spm_id_from=333.337.search-card.all.click&vd_source=d91bffd2a7a6acff9ff536f2f1332429) |      |
 | 导航                            | [NavRL](https://github.com/Zhefan-Xu/NavRL)                  |      |
 | 手柄-ros-isaac-lerobot-数据采集 | [ur5_simulation](https://www.youtube.com/watch?v=eO5wMzw9LeQ) |      |
+
+
 
 | 强化学习                                                     |                                                              |      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ---- |
